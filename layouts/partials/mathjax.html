@@ -1,2 +1,10 @@
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{{ if .Site.Params.bootcdn -}}
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{{- else if .Site.Params.publicCDN.enable -}}
+  {{ .Site.Params.publicCDN.polyfill | safeHTML }}
+  {{ .Site.Params.publicCDN.mathjax | safeHTML }}
+{{- else -}}
+  <script type="text/javascript" src="{{ "lib/modern/polyfill.min.js?features=es6" | relURL }}"></script>
+  <script type="text/javascript" src="{{ "lib/mathjax/tex-mml-chtml.js" | relURL }}"></script>
+{{- end }}
