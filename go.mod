@@ -1,3 +1,3 @@
-module github.com/xianmin/hugo-theme-jane
+module github.com/dsoyet/hugo-theme-jane
 
 go 1.21.0
